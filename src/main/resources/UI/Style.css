@@ -1,0 +1,11 @@
+.root{
+    -fx-background-color: BLACK;
+    -fx-opacity: 0.8;
+}
+
+.label{
+    -fx-font-style: Italic;
+    -fx-text-fill: WHITE;
+
+}
+#lblTitle{}

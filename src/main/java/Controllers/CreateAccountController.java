@@ -21,6 +21,8 @@ public class CreateAccountController {
     TextField txtFieldVerify;
     @FXML
     Label lblStatus;
+    @FXML
+    Label lblCorrect;
 
     public void switchPers_Buss(){
         if(lblStatus.getText().equals("Personal")) lblStatus.setText("Business");
@@ -31,7 +33,7 @@ public class CreateAccountController {
 
         if(txtFieldPassword.getText().equals(txtFieldVerify.getText()))
         System.out.println(txtFieldUsername.getText()+txtFieldPassword.getText());
-        else lblStatus.setText("Not same");
+        else lblCorrect.setText("Not Same");
     }
 
 }

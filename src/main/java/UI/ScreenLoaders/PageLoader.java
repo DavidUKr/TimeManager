@@ -17,6 +17,10 @@ public class PageLoader {
     private static Parent root;
     private static String FXMLpath;
 
+    public static boolean isInBusiness() {
+        return inBusiness;
+    }
+
     private static boolean inBusiness=true;
     public static void setPage(pages page){
         switch(page){

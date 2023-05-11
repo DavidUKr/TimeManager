@@ -6,13 +6,12 @@ import java.util.Iterator;
 public class LocalDatabase {
     ArrayList<IAccount> ACCOUNTS;
 
+    //CREATE
     public void addAcc(IAccount toAdd){
         ACCOUNTS.add(toAdd);
     }
-    public void deleteAcc(IAccount toDelete){
-        ACCOUNTS.remove(toDelete);
-    }
 
+    //READ
     public IAccount searchAcc(int ID){
         Iterator searcher=ACCOUNTS.iterator();
         while(searcher.hasNext()){
@@ -21,6 +20,7 @@ public class LocalDatabase {
         }
         return null;
     }
+
     public IAccount searchAcc(String Name){
         Iterator searcher=ACCOUNTS.iterator();
         while(searcher.hasNext()){
@@ -28,5 +28,11 @@ public class LocalDatabase {
             if(now.getUserName().equals(Name)) return now;
         }
         return null;
+    }
+    //UPDATE
+
+    //DELETE
+    public void deleteAcc(IAccount toDelete){
+        ACCOUNTS.remove(toDelete);
     }
 }

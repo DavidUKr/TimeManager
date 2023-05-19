@@ -13,7 +13,19 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <junit.version>5.9.1</junit.version>      </properties>
 
+
+
+
   <dependencies>
+
+    <dependency>
+      <groupId>de.jensd</groupId>
+      <artifactId>fontawesomefx</artifactId>
+      <version>8.2</version>
+    </dependency>
+    <!-- Thanks for using https://jar-download.com -->
+
+
     <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-controls</artifactId>

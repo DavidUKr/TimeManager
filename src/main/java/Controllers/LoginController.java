@@ -27,9 +27,9 @@ public class LoginController {
     @FXML
     Button btnCreateAccount;
 
-    Scene scene;
-    Stage stage;
-    Parent root;
+    static Scene scene;
+    static Stage stage;
+    static Parent root;
 
     public void login(ActionEvent event) throws IOException {
         System.out.println("Username:"+txtFieldUsername.getText());
@@ -43,8 +43,7 @@ public class LoginController {
         changeToMain(event, "/UI/CreateAccount.fxml");
     }
 
-    private void changeToMain(ActionEvent event, String path) throws IOException {
-
+    private void changeToMain(ActionEvent event, String path) throws IOException{
         root= FXMLLoader.load(getClass().getResource(path));
         scene=new Scene(root);
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();

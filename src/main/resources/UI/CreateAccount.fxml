@@ -24,9 +24,9 @@
       <Label layoutX="120.0" layoutY="254.0" text="Verify Password" />
       <Button fx:id="btnCreate" layoutX="465.0" layoutY="340.0" mnemonicParsing="false" onAction="#createAcc" text="Create" />
       <Label fx:id="lblStatus" layoutX="375.0" layoutY="308.0" text="Personal" />
-      <HBox layoutX="20.0" layoutY="14.0" prefHeight="26.0" prefWidth="200.0">
+      <HBox layoutX="14.0" layoutY="14.0" prefHeight="40.0" prefWidth="200.0">
          <children>
-            <FontAwesomeIcon glyphName="ARROW_LEFT" size="20" />
+            <FontAwesomeIcon glyphName="ARROW_LEFT" onMouseClicked="#goBack" size="20" />
          </children>
       </HBox>
    </children>

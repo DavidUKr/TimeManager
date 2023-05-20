@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.w3c.dom.Text;
 
@@ -31,6 +32,9 @@ public class LoginController {
     Stage stage;
     Parent root;
 
+
+
+
     public void login(ActionEvent event) throws IOException {
         System.out.println("Username:"+txtFieldUsername.getText());
         System.out.println("Pass:"+txtFieldPassword.getText());
@@ -44,6 +48,8 @@ public class LoginController {
     }
 
     private void changeToMain(ActionEvent event, String path) throws IOException {
+
+
 
         root= FXMLLoader.load(getClass().getResource(path));
         scene=new Scene(root);

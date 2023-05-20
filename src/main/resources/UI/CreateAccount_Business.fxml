@@ -24,5 +24,6 @@
       <TextField fx:id="txtFieldCoID" layoutX="236.0" layoutY="387.0" />
       <Label layoutX="130.0" layoutY="391.0" text="Company ID" />
       <Button fx:id="btnCheck" layoutX="385.0" layoutY="423.0" mnemonicParsing="false" text="Check" />
+
    </children>
 </AnchorPane>

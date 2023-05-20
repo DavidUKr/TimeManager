@@ -1,5 +1,5 @@
 .root{
-    -fx-background-color: BLACK;
+  -fx-background-color: BLACK;
     -fx-opacity: 0.8;
 }
 
@@ -9,3 +9,4 @@
 
 }
 #lblTitle{}
+

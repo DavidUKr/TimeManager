@@ -29,9 +29,9 @@
       <Button fx:id="btnCheck" layoutX="448.0" layoutY="340.0" mnemonicParsing="false" onAction="#checkCompany" text="Check" />
       <Button fx:id="btnCreate" layoutX="406.0" layoutY="405.0" mnemonicParsing="false" onAction="#createAcc" text="Create" />
       <Button fx:id="btnTogglePers_Buss" layoutX="226.0" layoutY="304.0" mnemonicParsing="false" onAction="#switchPers_Buss" text="Personal/Business" />
-      <HBox layoutX="14.0" layoutY="14.0" prefHeight="26.0" prefWidth="200.0">
+      <HBox layoutX="14.0" layoutY="14.0" prefHeight="40.0" prefWidth="200.0">
          <children>
-            <FontAwesomeIcon glyphName="ARROW_LEFT" size="20" />
+            <FontAwesomeIcon glyphName="ARROW_LEFT" onMouseClicked="#goBack" size="20" />
          </children>
       </HBox>
    </children>

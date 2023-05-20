@@ -25,13 +25,13 @@
       </TableView>
       <Label alignment="TOP_RIGHT" layoutX="105.0" layoutY="14.0" prefHeight="80.0" prefWidth="385.0" text="Time Management">
          <font>
-            <Font size="39.0" />
+            <Font name="System Bold Italic" size="39.0" />
          </font>
       </Label>
-      <Line endX="786.0" endY="-11.800010681152344" layoutX="-181.0" layoutY="105.0" startX="170.79998779296875" startY="-11.800010681152344" strokeWidth="2.0" />
+      <Line endX="786.0" endY="-11.800010681152344" layoutX="-181.0" layoutY="105.0" startX="170.79998779296875" startY="-11.800010681152344" strokeWidth="3.0" />
       <HBox layoutX="33.0" layoutY="104.0" prefHeight="54.0" prefWidth="108.0">
          <children>
-            <FontAwesomeIcon glyphName="USER_PLUS" onMouseClicked="#addTask" size="40" text="" />
+            <FontAwesomeIcon glyphName="USER_PLUS" onMouseClicked="#addTask" selectionFill="#8e8d8d" size="40" text="" />
          </children>
       </HBox>
       <HBox alignment="TOP_RIGHT" layoutX="641.0" layoutY="8.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="8.0">

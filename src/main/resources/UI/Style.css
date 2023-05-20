@@ -1,6 +1,6 @@
 .root{
-  -fx-background-color: BLACK;
-    -fx-opacity: 0.8;
+  -fx-background-color: black;
+
 }
 
 .label{
@@ -10,3 +10,7 @@
 }
 #lblTitle{}
 
+
+#USER_PLUS{
+    -fx-fill:white;
+}

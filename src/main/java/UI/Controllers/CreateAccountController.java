@@ -47,9 +47,10 @@ public class CreateAccountController {
     @FXML
     public void goBack(MouseEvent event) throws IOException {
 
-        root= FXMLLoader.load(PageLoader.class.getResource("/UI/Login.fxml"));
+        root= FXMLLoader.load(PageLoader.class.getResource("/UI/FirstPage.fxml"));
         preScene=new Scene(root);
         Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        preScene.getStylesheets().add("/UI/Style.css");
         stage.setScene(preScene);
         stage.show();
     }

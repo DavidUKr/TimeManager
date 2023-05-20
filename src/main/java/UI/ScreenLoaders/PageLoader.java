@@ -44,8 +44,10 @@ public class PageLoader {
         setPage(page);
 
         root= FXMLLoader.load(PageLoader.class.getResource(FXMLpath));
+
         scene=new Scene(root);
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+
         stage.setScene(scene);
         stage.show();
 }

@@ -18,10 +18,10 @@ public class Main extends Application{
     public void start(Stage stage) throws Exception {
 
 
-        Parent root= FXMLLoader.load(getClass().getResource("/UI/Login.fxml"));
+        Parent root= FXMLLoader.load(getClass().getResource("/UI/FirstPage.fxml"));
 
         Scene scene=new Scene(root);
-        scene.getStylesheets().add("/UI/Style.css");
+
         stage.setScene(scene);
         stage.show();
 

@@ -27,6 +27,7 @@ public class LoginController {
     Button btnCreateAccount;
 
 
+    Parent root;
     public void login(ActionEvent event) throws IOException {
         System.out.println("Username:"+txtFieldUsername.getText());
         System.out.println("Pass:"+txtFieldPassword.getText());
@@ -37,5 +38,16 @@ public class LoginController {
     public void gotoCreateAcc(ActionEvent event) throws IOException {
 
         PageLoader.loadPage(event, pages.CREATE_ACC);
+    }
+    @FXML
+    public void goBack(MouseEvent event) throws IOException{
+
+        root= FXMLLoader.load(PageLoader.class.getResource("/UI/FirstPage.fxml"));
+        Scene preScene=new Scene(root);
+        Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        preScene.getStylesheets().add("/UI/Style.css");
+        stage.setScene(preScene);
+        stage.show();
+
     }
 }

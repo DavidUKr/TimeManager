@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="406.0" prefWidth="605.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MainPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MainPageController">
    <children>
       <Label layoutX="126.0" layoutY="79.0">
          <font>
@@ -31,8 +31,7 @@
       <Line endX="786.0" endY="-11.800010681152344" layoutX="-181.0" layoutY="105.0" startX="170.79998779296875" startY="-11.800010681152344" strokeWidth="2.0" />
       <HBox layoutX="33.0" layoutY="104.0" prefHeight="54.0" prefWidth="108.0">
          <children>
-            <FontAwesomeIcon glyphName="USER_PLUS" size="40" text="" />
-            <FontAwesomeIcon glyphName="REFRESH" size="40" wrappingWidth="23.399970054626465" />
+            <FontAwesomeIcon glyphName="USER_PLUS" onMouseClicked="#addTask" size="40" text="" />
          </children>
       </HBox>
       <HBox alignment="TOP_RIGHT" layoutX="641.0" layoutY="8.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="8.0">

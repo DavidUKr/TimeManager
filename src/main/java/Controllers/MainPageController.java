@@ -60,8 +60,21 @@ public class MainPageController implements Initializable{
         root= FXMLLoader.load(PageLoader.class.getResource("/UI/Login.fxml"));
         preScene=new Scene(root);
         Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        preScene.getStylesheets().add("/UI/Style.css");
         stage.setScene(preScene);
         stage.show();
+    }
+
+    @FXML
+    public void addTask(MouseEvent event) throws IOException{
+        root= FXMLLoader.load(PageLoader.class.getResource("/UI/addTaskPage.fxml"));
+        Stage stage=new Stage();
+        Scene newScene=new Scene(root);
+        newScene.getStylesheets().add("/UI/Style.css");
+        stage.setScene(newScene);
+        stage.show();
+
+
     }
 
 

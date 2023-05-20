@@ -1,10 +1,20 @@
 package Controllers;
 
+
+import UI.ScreenLoaders.PageLoader;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 
 public class CreateAccountController {
@@ -24,6 +34,9 @@ public class CreateAccountController {
     @FXML
     Label lblCorrect;
 
+
+    Scene preScene;
+    Parent root;
     public void switchPers_Buss(){
         if(lblStatus.getText().equals("Personal")) lblStatus.setText("Business");
         else lblStatus.setText("Personal");
@@ -35,5 +48,7 @@ public class CreateAccountController {
         System.out.println(txtFieldUsername.getText()+txtFieldPassword.getText());
         else lblCorrect.setText("Not Same");
     }
+
+
 
 }

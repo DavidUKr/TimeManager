@@ -17,7 +17,10 @@ public class PageLoader {
     private static Parent root;
     private static String FXMLpath;
 
-    private static boolean inBusiness=true;
+    private static boolean inBusiness;
+    public  static void setInBussiness(boolean setvalue){
+        inBusiness=setvalue;
+    }
     public static void setPage(pages page){
         switch(page){
             case LOGIN ->{
@@ -36,6 +39,7 @@ public class PageLoader {
                     inBusiness=true;
                 }
             }
+
         }
     }
 

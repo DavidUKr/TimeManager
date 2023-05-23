@@ -18,7 +18,7 @@ public class FirstPageController {
     @FXML
     public void gotoCreateAcc(ActionEvent event) throws IOException {
 
-        changeToMain(event, "/UI/CreateAccount.fxml");
+        changeToMain(event, "/UI/ChooseTypeOfAccountToCreate.fxml");
     }
 
     @FXML

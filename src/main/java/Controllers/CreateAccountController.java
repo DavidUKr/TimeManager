@@ -37,10 +37,7 @@ public class CreateAccountController {
 
     Scene preScene;
     Parent root;
-    public void switchPers_Buss(){
-        if(lblStatus.getText().equals("Personal")) lblStatus.setText("Business");
-        else lblStatus.setText("Personal");
-    }
+
 
     public void createAcc(){
 

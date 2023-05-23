@@ -10,17 +10,17 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="378.0" prefWidth="605.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.Controllers.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.Controllers.LoginController">
    <children>
       <HBox layoutX="14.0" layoutY="14.0" prefHeight="40.0" prefWidth="200.0" />
-      <ImageView fitHeight="400.0" fitWidth="620.0" layoutX="-8.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="400.0" fitWidth="640.0" layoutX="-18.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Images/backgound2.jpeg" />
          </image>
       </ImageView>
       <Label fx:id="lblTitle" layoutX="232.0" layoutY="54.0" text="LOGIN" textFill="WHITE">
          <font>
-            <Font size="48.0" />
+            <Font name="System Bold Italic" size="48.0" />
          </font>
       </Label>
       <Button fx:id="btnLogin" blendMode="LIGHTEN" layoutX="277.0" layoutY="307.0" mnemonicParsing="false" onAction="#login" prefHeight="11.0" prefWidth="62.0" text="LOGIN" />
@@ -34,11 +34,11 @@
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="txtFieldUsername" layoutX="234.0" layoutY="248.0" />
-      <TextField fx:id="txtFieldPassword" layoutX="234.0" layoutY="190.0" />
+      <TextField fx:id="txtFieldUsername" layoutX="234.0" layoutY="248.0" prefHeight="26.0" prefWidth="170.0" />
+      <TextField fx:id="txtFieldPassword" layoutX="234.0" layoutY="190.0" prefHeight="26.0" prefWidth="170.0" />
       <HBox layoutX="14.0" layoutY="14.0" prefHeight="40.0" prefWidth="200.0">
          <children>
-            <FontAwesomeIcon glyphName="ARROW_LEFT" onMouseClicked="#goBack" size="20" text="" />
+            <FontAwesomeIcon fill="WHITE" glyphName="ARROW_LEFT" onMouseClicked="#goBack" size="20" text="" />
          </children>
       </HBox>
 

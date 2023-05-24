@@ -2,7 +2,6 @@ package Controllers;
 
 import UI.ScreenLoaders.PageLoader;
 import components.Task;
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -11,7 +10,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -21,10 +19,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
 public class MainPageController implements Initializable{
@@ -35,6 +32,10 @@ public class MainPageController implements Initializable{
     @FXML private TableColumn<Task,String> TITLECol;
     @FXML private TableColumn<Task, String> DESCRIPTIONCol;
     @FXML private TableColumn<Task, Date> dueDateCol;
+    private static String taskName;
+    private static String taskDescription;
+    private static String mydate;
+    String myFormattedDate;
     Scene preScene;
     Parent root;
     ObservableList<Task> TaskList=FXCollections.observableArrayList();
@@ -45,6 +46,12 @@ public class MainPageController implements Initializable{
         DESCRIPTIONCol.setCellValueFactory(new PropertyValueFactory<Task,String>("DESCRIPTION"));
         dueDateCol.setCellValueFactory(new PropertyValueFactory<Task, Date>("dueDate"));
 
+    }
+
+    public static void mainData(String name, String desc, String date){
+        taskName=name;
+        taskDescription=desc;
+        mydate=date;
     }
     @FXML
     public void close(MouseEvent event) {
@@ -73,9 +80,9 @@ public class MainPageController implements Initializable{
         newScene.getStylesheets().add("/UI/Style.css");
         stage.setScene(newScene);
         stage.show();
-
-
     }
+
+
 
 
 

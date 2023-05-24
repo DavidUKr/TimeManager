@@ -2,6 +2,7 @@ package Controllers;
 
 import UI.ScreenLoaders.PageLoader;
 import components.Task;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -20,39 +21,46 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.ResourceBundle;
 
 
 public class MainPageController implements Initializable{
-
-
-    @FXML
-    private TableView<Task> tableView;
-    @FXML private TableColumn<Task,String> TITLECol;
-    @FXML private TableColumn<Task, String> DESCRIPTIONCol;
-    @FXML private TableColumn<Task, Date> dueDateCol;
     private static String taskName;
     private static String taskDescription;
     private static String mydate;
+    private static Task task;
     String myFormattedDate;
     Scene preScene;
     Parent root;
-    ObservableList<Task> TaskList=FXCollections.observableArrayList();
+    static ObservableList<Task> TaskList=FXCollections.observableArrayList();
+
+    @FXML
+    private TableView tableView=new TableView<Task>();
+    @FXML private TableColumn<Task,String> TITLECol=new TableColumn<Task, String>("Title");
+    @FXML private TableColumn<Task, String> DESCRIPTIONCol=new TableColumn<Task, String>("Description");
+    @FXML private TableColumn<Task, LocalDate> dueDateCol=new TableColumn<Task,LocalDate>("Date");
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        TITLECol.setCellValueFactory(new PropertyValueFactory<Task,String>("TITLE"));
-        DESCRIPTIONCol.setCellValueFactory(new PropertyValueFactory<Task,String>("DESCRIPTION"));
-        dueDateCol.setCellValueFactory(new PropertyValueFactory<Task, Date>("dueDate"));
+            TITLECol.setCellValueFactory(new PropertyValueFactory<Task,String>("TITLE"));
+            DESCRIPTIONCol.setCellValueFactory(new PropertyValueFactory<Task,String>("DESCRIPTION"));
+            dueDateCol.setCellValueFactory(new PropertyValueFactory<Task, LocalDate>("dueDATE"));
+
+
+            tableView.getColumns().addAll(TITLECol, DESCRIPTIONCol,dueDateCol);
+            Task task1=new Task("Clean","CLeanAgain", LocalDate.now());
+            tableView.getItems().add(task1);
 
     }
 
-    public static void mainData(String name, String desc, String date){
-        taskName=name;
-        taskDescription=desc;
-        mydate=date;
+    public void addDataToTable(Task task) {
+        tableView.getItems().add(task);
     }
+
+
     @FXML
     public void close(MouseEvent event) {
         Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
@@ -74,9 +82,12 @@ public class MainPageController implements Initializable{
 
     @FXML
     public void addTask(MouseEvent event) throws IOException{
-        root= FXMLLoader.load(PageLoader.class.getResource("/UI/addTaskPage.fxml"));
-        Stage stage=new Stage();
-        Scene newScene=new Scene(root);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/UI/addTaskPage.fxml"));
+        Parent root = loader.load();
+        AddTaskController addTaskController = loader.getController();
+        addTaskController.setMainPageController(this);
+        Stage stage = new Stage();
+        Scene newScene = new Scene(root);
         newScene.getStylesheets().add("/UI/Style.css");
         stage.setScene(newScene);
         stage.show();

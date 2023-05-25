@@ -29,7 +29,7 @@ public class AddTaskController {
     LocalDate mydate;
     String myFormattedDate;
     MainPageController mainPageController=new MainPageController();
-
+    PersonalAcc personalAcc=new PersonalAcc(7,"ana");
     public void setMainPageController(MainPageController mainPageController) {
         this.mainPageController = mainPageController;
     }
@@ -51,8 +51,7 @@ public class AddTaskController {
             mainPageController.addDataToTable(task);
         }
 
-        PersonalAcc personalAcc=new PersonalAcc(7,"ana");
-        personalAcc.addTasks(task);
+        personalAcc.addTasks( task);
         Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }

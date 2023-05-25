@@ -38,6 +38,8 @@ public class PersonalAcc implements IAccount{
         TASKS.add(task);
         System.out.println(task.getTITLE()+"\n"+task.getDESCRIPTION()+"\n"+task.getDueDATE()+"\n");
     }
+    public void deleteTask(Task task){
 
+    }
 
 }

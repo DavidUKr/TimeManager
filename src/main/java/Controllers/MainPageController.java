@@ -81,7 +81,7 @@ public class MainPageController implements Initializable{
 
                     {
                         try {
-                            input = new FileInputStream("C:\\paula\\TimeManager\\src\\main\\resources\\UI\\Images\\trash.png");
+                            input = new FileInputStream("src/main/resources/UI/Images/checkbox.png");
                         } catch (FileNotFoundException e) {
                             throw new RuntimeException(e);
                         }
@@ -141,7 +141,7 @@ public class MainPageController implements Initializable{
 
                     {
                         try {
-                            input = new FileInputStream("C:\\paula\\TimeManager\\src\\main\\resources\\UI\\Images\\checkbox.png");
+                            input = new FileInputStream("src/main/resources/UI/Images/trash.png");
                         } catch (FileNotFoundException e) {
                             throw new RuntimeException(e);
                         }

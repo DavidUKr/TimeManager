@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CheckListController">
+   <children>
+      <ImageView blendMode="SRC_ATOP" fitHeight="520.0" fitWidth="739.0" layoutX="-130.0" layoutY="-38.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/backgorund3.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="239.0" layoutY="28.0" text="Checked Tasks" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="36.0" />
+         </font>
+      </Label>
+      <FontAwesomeIcon fill="WHITE" glyphName="CLOSE" layoutX="474.0" layoutY="24.0" onMouseClicked="#close" size="25" text="" wrappingWidth="23.714163780212402" />
+      <TableView fx:id="tableView" layoutX="14.0" layoutY="118.0" prefHeight="168.0" prefWidth="470.0">
+         <columns>
+            <TableColumn fx:id="TITLECol" prefWidth="100.0" text="Title" />
+            <TableColumn fx:id="DESCRIPTIONCol" minWidth="0.0" prefWidth="294.0" text="Description" />
+            <TableColumn fx:id="dueDateCol" prefWidth="75.0" text="DueDate" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

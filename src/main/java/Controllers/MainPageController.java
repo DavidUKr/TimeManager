@@ -2,7 +2,6 @@ package Controllers;
 
 import UI.ScreenLoaders.PageLoader;
 import components.Task;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -29,9 +28,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
@@ -43,16 +40,21 @@ public class MainPageController implements Initializable{
     String myFormattedDate;
     Scene preScene;
     Parent root;
-    static ObservableList<Task> TaskList=FXCollections.observableArrayList();
+    ObservableList<Task> TaskList=FXCollections.observableArrayList();
+    ArrayList<Task> taskChecked=new ArrayList<>();
+
 
     @FXML
     private TableView tableView=new TableView<Task>();
     @FXML private TableColumn<Task,String> TITLECol=new TableColumn<Task, String>("Title");
     @FXML private TableColumn<Task, String> DESCRIPTIONCol=new TableColumn<Task, String>("Description");
     @FXML private TableColumn<Task, LocalDate> dueDateCol=new TableColumn<Task,LocalDate>("Date");
+    @FXML Button btnCheckList;
+    CheckListController checkListController;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
             TITLECol.setCellValueFactory(new PropertyValueFactory<Task,String>("TITLE"));
             DESCRIPTIONCol.setCellValueFactory(new PropertyValueFactory<Task,String>("DESCRIPTION"));
             dueDateCol.setCellValueFactory(new PropertyValueFactory<Task, LocalDate>("dueDATE"));
@@ -163,8 +165,8 @@ public class MainPageController implements Initializable{
                             Task data = getTableView().getItems().get(getIndex());
                             System.out.println("selectedData: " + data.getTITLE()+data.getDESCRIPTION()+data.getDueDATE());
                             data.setStatus(1);
-                            checkedTask(data);
 
+                            checkedTask(data);
                         });
                     }
 
@@ -194,9 +196,6 @@ public class MainPageController implements Initializable{
         tableView.getItems().add(task);
     }
 
-    public void checkedTask(Task task){
-        tableView.getItems().remove(task);
-    }
 
     public void DeleteTask(Task task){
         tableView.getItems().remove(task);
@@ -233,9 +232,28 @@ public class MainPageController implements Initializable{
         stage.setScene(newScene);
         stage.show();
     }
+    public void checkedTask(Task task){
+        if (checkListController != null) {
+           taskChecked.add(task);
+        }
+        tableView.getItems().remove(task);
+    }
+
+    @FXML
+    public void getchecklist(MouseEvent event) throws IOException {
 
 
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/UI/doneTasks.fxml"));
+        Parent root = loader.load();
 
+        checkListController = loader.getController();
+        checkListController.setMainPageController(this);
+        Stage stage = new Stage();
+        Scene newScene = new Scene(root);
+        stage.setScene(newScene);
 
+        stage.show();
+        checkListController.addDataToTable(taskChecked);
+    }
 
 }

@@ -1,9 +1,11 @@
-package database;
+package database.repos;
+
+import database.model.IAccount;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class LocalDatabase {
+public class UserRepoImpl implements UserRepo{
     ArrayList<IAccount> ACCOUNTS;
 
     //CREATE
@@ -30,6 +32,7 @@ public class LocalDatabase {
         return null;
     }
     //UPDATE
+
 
     //DELETE
     public void deleteAcc(IAccount toDelete){

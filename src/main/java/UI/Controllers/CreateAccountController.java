@@ -2,18 +2,15 @@ package UI.Controllers;
 
 import UI.ScreenLoaders.PageLoader;
 import UI.ScreenLoaders.pages;
-import database.BusinessAcc;
-import database.IAccount;
-import database.LocalDatabase;
-import database.PersonalAcc;
+import database.model.BusinessAcc;
+import database.model.IAccount;
+import database.repos.UserRepoImpl;
+import database.model.PersonalAcc;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.AccessibleRole;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
-import main.Main;
 
 import java.io.IOException;
 import java.util.Random;
@@ -40,7 +37,7 @@ public class CreateAccountController {
     @FXML
     Label lblExists;
 
-    LocalDatabase database;
+    UserRepoImpl database;
 
     public void switchPers_Buss(ActionEvent event) throws IOException {
         PageLoader.loadPage(event, pages.CREATE_ACC);

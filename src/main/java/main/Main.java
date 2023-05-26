@@ -1,23 +1,22 @@
 package main;
 
-import database.LocalDatabase;
+import database.repos.UserRepoImpl;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.w3c.dom.CDATASection;
 
 public class Main extends Application{
 
-    private LocalDatabase database;
+    private UserRepoImpl database;
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
     public void start(Stage stage) throws Exception {
-        database=new LocalDatabase();
+        database=new UserRepoImpl();
 
         Parent root= FXMLLoader.load(getClass().getResource("/UI/Login.fxml"));
         Scene scene=new Scene(root);
@@ -26,7 +25,7 @@ public class Main extends Application{
         stage.show();
     }
 
-    public LocalDatabase getDatabase(){
+    public UserRepoImpl getDatabase(){
         return database;
     }
 }

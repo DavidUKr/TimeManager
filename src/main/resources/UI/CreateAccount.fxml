@@ -49,6 +49,7 @@
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
-      <FontAwesomeIcon fill="#fffefe" glyphName="ARROW_LEFT" layoutX="24.0" layoutY="43.0" onMouseClicked="#goBack" size="20" text="" />
+      <FontAwesomeIcon fill="#fffefe" glyphName="ARROW_LEFT" layoutX="23.0" layoutY="43.0" onMouseClicked="#goBack" size="20" text="" />
+      <FontAwesomeIcon fill="WHITE" glyphName="CLOSE" layoutX="565.0" layoutY="43.0" onMouseClicked="#close" size="25" text="" wrappingWidth="23.714163780212402" />
    </children>
 </AnchorPane>

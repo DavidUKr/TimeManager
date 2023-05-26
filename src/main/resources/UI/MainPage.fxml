@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MainPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.Controllers.MainPageController">
    <children>
       <Label layoutX="126.0" layoutY="79.0">
          <font>
@@ -23,8 +23,8 @@
             <Image url="@Images/background4.png" />
          </image>
       </ImageView>
-      <FontAwesomeIcon fill="WHITE" glyphName="CLOSE" layoutX="559.0" layoutY="42.0" onMouseClicked="#close" size="25" text="" wrappingWidth="23.714163780212402" />
-      <FontAwesomeIcon fill="WHITE" glyphName="ARROW_LEFT" layoutX="24.0" layoutY="40.0" onMouseClicked="#goBack" size="20" text="" />
+      <FontAwesomeIcon fill="WHITE" glyphName="CLOSE" layoutX="565.0" layoutY="43.0" onMouseClicked="#close" size="25" text="" wrappingWidth="23.714163780212402" />
+      <FontAwesomeIcon fill="WHITE" glyphName="ARROW_LEFT" layoutX="24.0" layoutY="43.0" onMouseClicked="#goBack" size="20" text="" />
       <FontAwesomeIcon fill="WHITE" glyphName="USER_PLUS" layoutX="41.0" layoutY="138.0" onMouseClicked="#addTask" selectionFill="#8e8d8d" size="40" text="" />
       <TableView fx:id="tableView" layoutX="14.0" layoutY="158.0" prefHeight="230.0" prefWidth="575.0">
          <columns>

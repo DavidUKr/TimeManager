@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -29,6 +30,12 @@ public class PageLoader {
             case MENU ->{
                 FXMLpath="/UI/MainPage.fxml";
             }
+            case CHOOSE_TYPE_ACC -> {
+                FXMLpath="/UI/ChooseTypeOfAccountToCreate.fxml";
+            }
+            case FIRST_PAGE -> {
+               FXMLpath="/UI/FirstPage.fxml";
+            }
             case CREATE_ACC ->{
                 if(inBusiness){
                     FXMLpath="/UI/CreateAccount.fxml";
@@ -39,6 +46,7 @@ public class PageLoader {
                     inBusiness=true;
                 }
             }
+
 
         }
     }
@@ -54,5 +62,19 @@ public class PageLoader {
 
         stage.setScene(scene);
         stage.show();
-}
+    }
+    public static void loadPageMouse(MouseEvent event, pages page) throws IOException {
+
+        setPage(page);
+
+        root= FXMLLoader.load(PageLoader.class.getResource(FXMLpath));
+
+        scene=new Scene(root);
+        stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
 }

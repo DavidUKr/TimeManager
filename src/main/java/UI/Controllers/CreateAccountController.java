@@ -4,15 +4,10 @@ import UI.ScreenLoaders.PageLoader;
 import UI.ScreenLoaders.pages;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.AccessibleRole;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -35,24 +30,15 @@ public class CreateAccountController {
     @FXML
     TextField txtFieldVerify;
     @FXML
-    Label lblStatus;
-    @FXML
     Label lblCorrect;
     @FXML
     Label lblExists;
 
-    Parent root;
-    Scene preScene;
-
     @FXML
     public void goBack(MouseEvent event) throws IOException {
 
-        root= FXMLLoader.load(PageLoader.class.getResource("/UI/FirstPage.fxml"));
-        preScene=new Scene(root);
-        Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-        preScene.getStylesheets().add("/UI/Style.css");
-        stage.setScene(preScene);
-        stage.show();
+        PageLoader.loadPageMouse(event,pages.FIRST_PAGE);
+
     }
     public void switchPers_Buss(ActionEvent event) throws IOException {
         PageLoader.loadPage(event, pages.CREATE_ACC);
@@ -70,5 +56,10 @@ public class CreateAccountController {
         if(random.nextInt()%2==0)
         lblExists.setText("Found");
         else lblExists.setText("NotFound");
+    }
+    @FXML
+    public void close(MouseEvent event) {
+        Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        stage.close();
     }
 }

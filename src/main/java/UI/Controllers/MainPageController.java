@@ -1,9 +1,8 @@
-package Controllers;
+package UI.Controllers;
 
 import UI.ScreenLoaders.PageLoader;
+import UI.ScreenLoaders.pages;
 import components.Task;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,9 +19,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Callback;
-
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -33,14 +31,7 @@ import java.util.ResourceBundle;
 
 
 public class MainPageController implements Initializable{
-    private static String taskName;
-    private static String taskDescription;
-    private static String mydate;
-    private static Task task;
-    String myFormattedDate;
-    Scene preScene;
-    Parent root;
-    ObservableList<Task> TaskList=FXCollections.observableArrayList();
+
     ArrayList<Task> taskChecked=new ArrayList<>();
 
 
@@ -49,7 +40,7 @@ public class MainPageController implements Initializable{
     @FXML private TableColumn<Task,String> TITLECol=new TableColumn<Task, String>("Title");
     @FXML private TableColumn<Task, String> DESCRIPTIONCol=new TableColumn<Task, String>("Description");
     @FXML private TableColumn<Task, LocalDate> dueDateCol=new TableColumn<Task,LocalDate>("Date");
-    @FXML Button btnCheckList;
+
     CheckListController checkListController;
 
     @Override
@@ -59,17 +50,15 @@ public class MainPageController implements Initializable{
             DESCRIPTIONCol.setCellValueFactory(new PropertyValueFactory<Task,String>("DESCRIPTION"));
             dueDateCol.setCellValueFactory(new PropertyValueFactory<Task, LocalDate>("dueDATE"));
 
-
-//            tableView.getColumns().addAll(TITLECol, DESCRIPTIONCol,dueDateCol);
-            Task task1=new Task("Clean","CLeanAgain", LocalDate.now());
+            Task task1=new Task("Welcome!","Start managing your time!", LocalDate.now());
             tableView.getItems().add(task1);
-            addButtonToTable();
 
-            addButtonToTable2();
+            addDeleteButtonToTable();
+            addCheckButtonToTable();
 
     }
 
-    private void addButtonToTable() {
+    private void addDeleteButtonToTable() {
         TableColumn<Task, Void> colBtn = new TableColumn("");
 
         Callback<TableColumn<Task, Void>, TableCell<Task, Void>> cellFactory = new Callback<TableColumn<Task, Void>, TableCell<Task, Void>>() {
@@ -128,7 +117,7 @@ public class MainPageController implements Initializable{
         tableView.getColumns().add(colBtn);
 
     }
-    private void addButtonToTable2() {
+    private void addCheckButtonToTable() {
         TableColumn<Task, Void> colBtn = new TableColumn("");
 
         Callback<TableColumn<Task, Void>, TableCell<Task, Void>> cellFactory = new Callback<TableColumn<Task, Void>, TableCell<Task, Void>>() {
@@ -206,22 +195,17 @@ public class MainPageController implements Initializable{
         Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
-    public void setPreScene(Scene preScene) {
-        this.preScene = preScene;
-    }
+
     @FXML
     public void goBack(MouseEvent event) throws IOException {
 
-        root= FXMLLoader.load(PageLoader.class.getResource("/UI/Login.fxml"));
-        preScene=new Scene(root);
-        Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-        preScene.getStylesheets().add("/UI/Style.css");
-        stage.setScene(preScene);
-        stage.show();
+        PageLoader.loadPageMouse(event, pages.LOGIN);
+
     }
 
     @FXML
     public void addTask(MouseEvent event) throws IOException{
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/UI/addTaskPage.fxml"));
         Parent root = loader.load();
         AddTaskController addTaskController = loader.getController();
@@ -229,14 +213,23 @@ public class MainPageController implements Initializable{
         Stage stage = new Stage();
         Scene newScene = new Scene(root);
         newScene.getStylesheets().add("/UI/Style.css");
+        stage.setResizable(false);
+        stage.initStyle(StageStyle.UNDECORATED);
+        Image icon=new Image("/UI/Images/watch2.png");
+        stage.getIcons().add(icon);
+        stage.setTitle("Time Management");
+
         stage.setScene(newScene);
         stage.show();
     }
     public void checkedTask(Task task){
-        if (checkListController != null) {
-           taskChecked.add(task);
-        }
+
+        taskChecked.add(task);
         tableView.getItems().remove(task);
+    }
+
+    public ArrayList<Task> getTask(){
+        return taskChecked;
     }
 
     @FXML
@@ -245,15 +238,20 @@ public class MainPageController implements Initializable{
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/UI/doneTasks.fxml"));
         Parent root = loader.load();
-
-        checkListController = loader.getController();
+        checkListController= loader.getController();
         checkListController.setMainPageController(this);
         Stage stage = new Stage();
+        stage.setResizable(false);
+        stage.setTitle("Time Management");
+        Image icon=new Image("/UI/Images/watch2.png");
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.getIcons().add(icon);
         Scene newScene = new Scene(root);
         stage.setScene(newScene);
 
+        checkListController.Check();
         stage.show();
-        checkListController.addDataToTable(taskChecked);
+
     }
 
 }

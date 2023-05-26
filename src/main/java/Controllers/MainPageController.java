@@ -233,10 +233,13 @@ public class MainPageController implements Initializable{
         stage.show();
     }
     public void checkedTask(Task task){
-        if (checkListController != null) {
-           taskChecked.add(task);
-        }
+
+        taskChecked.add(task);
         tableView.getItems().remove(task);
+    }
+
+    public ArrayList<Task> getTask(){
+        return taskChecked;
     }
 
     @FXML
@@ -245,15 +248,14 @@ public class MainPageController implements Initializable{
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/UI/doneTasks.fxml"));
         Parent root = loader.load();
-
-        checkListController = loader.getController();
+        checkListController= loader.getController();
         checkListController.setMainPageController(this);
         Stage stage = new Stage();
         Scene newScene = new Scene(root);
         stage.setScene(newScene);
-
+        checkListController.Check(stage);
         stage.show();
-        checkListController.addDataToTable(taskChecked);
+
     }
 
 }

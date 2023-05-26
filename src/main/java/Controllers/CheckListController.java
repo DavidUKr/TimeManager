@@ -32,7 +32,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
-public class CheckListController implements Initializable{
+public class CheckListController{
     private static String taskName;
     private static String taskDescription;
     private static String mydate;
@@ -49,30 +49,41 @@ public class CheckListController implements Initializable{
     @FXML private TableColumn<Task, LocalDate> dueDateCol=new TableColumn<Task,LocalDate>("Date");
 
     MainPageController mainPageController=new MainPageController();
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void setMainPageController(MainPageController mainPageController) {
+        this.mainPageController = mainPageController;
+    }
+
+    public void Check(Stage stage){
 
         TITLECol.setCellValueFactory(new PropertyValueFactory<Task,String>("TITLE"));
         DESCRIPTIONCol.setCellValueFactory(new PropertyValueFactory<Task,String>("DESCRIPTION"));
         dueDateCol.setCellValueFactory(new PropertyValueFactory<Task, LocalDate>("dueDATE"));
 
-
-//            tableView.getColumns().addAll(TITLECol, DESCRIPTIONCol,dueDateCol);
         Task task1=new Task("Clean","CLeanAgain", LocalDate.now());
         tableView.getItems().add(task1);
-
-
+        addDataToTable();
     }
 
-    public void setMainPageController(MainPageController mainPageController) {
-        this.mainPageController = mainPageController;
-    }
 
-    public void addDataToTable(ArrayList<Task> task) {
-    //    tableView.getItems().add(task);
-        for(Task completed:task){
-            System.out.println(completed.getTITLE()+completed.getDESCRIPTION()+completed.getStatus());
+
+
+
+
+
+
+    public void addDataToTable() {
+        ArrayList<Task> taskArrayList=new ArrayList<>();
+        if (mainPageController != null) {
+           taskArrayList=mainPageController.getTask();
         }
+
+        for(Task task3:taskArrayList){
+            tableView.getItems().add(task3);
+            System.out.println(task3.getTITLE()+task3.getDESCRIPTION());
+        }
+        Task task2=new Task("Clean","CLeanAgain", LocalDate.now());
+        tableView.getItems().add(task2);
+
     }
 
 

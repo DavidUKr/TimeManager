@@ -11,6 +11,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+
+
 public class PageLoader {
 
     private static Scene scene;

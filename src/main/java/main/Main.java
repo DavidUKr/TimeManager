@@ -1,5 +1,6 @@
 package main;
 
+import components.Task;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,7 +31,6 @@ public class Main extends Application{
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);
         stage.show();
-
 
     }
 }

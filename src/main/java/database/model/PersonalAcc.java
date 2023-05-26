@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class PersonalAcc implements IAccount{
     private int ID;
     private String userName;
-    ArrayList<Task> TASKS;
+    private ArrayList<Task> TASKS;
 
     public PersonalAcc(){
 
@@ -33,4 +33,13 @@ public class PersonalAcc implements IAccount{
     public ArrayList<Task> getTasks() {
         return TASKS;
     }
+
+    public void addTasks(Task task){
+        TASKS.add(task);
+        System.out.println(task.getTITLE()+"\n"+task.getDESCRIPTION()+"\n"+task.getDueDATE()+"\n");
+    }
+    public void deleteTask(Task task){
+
+    }
+
 }

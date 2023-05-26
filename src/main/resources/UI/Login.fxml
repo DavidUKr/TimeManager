@@ -1,23 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="406.0" prefWidth="605.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.Controllers.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.Controllers.LoginController">
    <children>
-      <Label fx:id="lblTitle" layoutX="218.0" layoutY="46.0" text="LOGIN">
+      <HBox layoutX="14.0" layoutY="14.0" prefHeight="40.0" prefWidth="200.0" />
+      <ImageView fitHeight="400.0" fitWidth="640.0" layoutX="-18.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/backgound2.jpeg" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblTitle" layoutX="232.0" layoutY="54.0" text="LOGIN" textFill="WHITE">
          <font>
-            <Font size="48.0" />
+            <Font name="System Bold Italic" size="48.0" />
          </font>
       </Label>
-      <TextField fx:id="txtFieldUsername" layoutX="214.0" layoutY="157.0" />
-      <TextField fx:id="txtFieldPassword" layoutX="214.0" layoutY="212.0" />
-      <Label layoutX="130.0" layoutY="161.0" text="Username" />
-      <Label layoutX="132.0" layoutY="203.0" text="Password" />
-      <Button fx:id="btnLogin" layoutX="263.0" layoutY="311.0" mnemonicParsing="false" onAction="#login" text="LOGIN" />
-      <Button fx:id="btnCreateAccount" layoutX="371.0" layoutY="265.0" mnemonicParsing="false" onAction="#gotoCreateAcc" text="CreateAcccount" />
+      <Button fx:id="btnLogin" blendMode="LIGHTEN" layoutX="277.0" layoutY="307.0" mnemonicParsing="false" onAction="#login" prefHeight="11.0" prefWidth="62.0" text="LOGIN" />
+      <Label layoutX="75.0" layoutY="247.0" prefHeight="20.0" prefWidth="111.0" text="Password" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="72.0" layoutY="189.0" text="Username" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtFieldUsername" layoutX="234.0" layoutY="248.0" prefHeight="26.0" prefWidth="170.0" />
+      <TextField fx:id="txtFieldPassword" layoutX="234.0" layoutY="190.0" prefHeight="26.0" prefWidth="170.0" />
+      <FontAwesomeIcon fill="WHITE" glyphName="CLOSE" layoutX="565.0" layoutY="42.0" onMouseClicked="#close" size="25" text="" wrappingWidth="23.714163780212402" />
+      <FontAwesomeIcon fill="WHITE" glyphName="ARROW_LEFT" layoutX="24.0" layoutY="42.0" onMouseClicked="#goBack" size="20" text="" />
+
    </children>
 </AnchorPane>

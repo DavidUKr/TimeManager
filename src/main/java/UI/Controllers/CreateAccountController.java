@@ -8,9 +8,18 @@ import database.repos.UserRepoImpl;
 import database.model.PersonalAcc;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+<<<<<<< HEAD
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+=======
+import javafx.scene.Node;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+>>>>>>> UI
 
 import java.io.IOException;
 import java.util.Random;
@@ -31,14 +40,21 @@ public class CreateAccountController {
     @FXML
     TextField txtFieldVerify;
     @FXML
-    Label lblStatus;
-    @FXML
     Label lblCorrect;
     @FXML
     Label lblExists;
 
+<<<<<<< HEAD
     UserRepoImpl database;
 
+=======
+    @FXML
+    public void goBack(MouseEvent event) throws IOException {
+
+        PageLoader.loadPageMouse(event,pages.FIRST_PAGE);
+
+    }
+>>>>>>> UI
     public void switchPers_Buss(ActionEvent event) throws IOException {
         PageLoader.loadPage(event, pages.CREATE_ACC);
     }
@@ -62,5 +78,10 @@ public class CreateAccountController {
         if(random.nextInt()%2==0)
         lblExists.setText("Found");
         else lblExists.setText("NotFound");
+    }
+    @FXML
+    public void close(MouseEvent event) {
+        Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        stage.close();
     }
 }

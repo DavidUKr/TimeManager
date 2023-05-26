@@ -2,10 +2,14 @@ package main;
 
 import database.repos.UserRepoImpl;
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class Main extends Application{
 
@@ -18,11 +22,19 @@ public class Main extends Application{
     public void start(Stage stage) throws Exception {
         database=new UserRepoImpl();
 
-        Parent root= FXMLLoader.load(getClass().getResource("/UI/Login.fxml"));
+
+        Parent root= FXMLLoader.load(getClass().getResource("/UI/FirstPage.fxml"));
+
         Scene scene=new Scene(root);
-        scene.getStylesheets().add("/UI/Style.css");
+        stage.setTitle("Time Management");
+
+        Image icon=new Image("/UI/Images/watch2.png");
+        stage.getIcons().add(icon);
+        stage.setResizable(false);
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);
         stage.show();
+
     }
 
     public UserRepoImpl getDatabase(){

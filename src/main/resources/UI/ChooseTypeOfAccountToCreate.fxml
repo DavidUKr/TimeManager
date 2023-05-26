@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.Controllers.ChooseTypeOfAccountController">
+   <children>
+      <ImageView fitHeight="411.0" fitWidth="616.0" layoutX="-8.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/backgroundimage.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="112.0" prefHeight="94.0" prefWidth="392.0" text="Choose type of account" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="36.0" />
+         </font>
+      </Label>
+      <Button blendMode="SCREEN" layoutX="32.0" layoutY="249.0" mnemonicParsing="false" onAction="#goToPersonalAcc" prefHeight="46.0" prefWidth="152.0" text="Personal" textFill="#0d0d0d">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </Button>
+      <Button blendMode="SCREEN" layoutX="405.0" layoutY="249.0" mnemonicParsing="false" onAction="#goToBussinessAcc" prefHeight="46.0" prefWidth="152.0" text="Bussiness" textFill="#0d0d0d">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </Button>
+      <FontAwesomeIcon fill="WHITE" glyphName="ARROW_LEFT" layoutX="23.0" layoutY="43.0" onMouseClicked="#goBack" size="20" text="" />
+      <FontAwesomeIcon fill="WHITE" glyphName="CLOSE" layoutX="565.0" layoutY="43.0" onMouseClicked="#close" size="25" text="" wrappingWidth="23.714163780212402" />
+   </children>
+</AnchorPane>

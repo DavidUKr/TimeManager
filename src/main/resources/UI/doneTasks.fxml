@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -27,5 +28,6 @@
             <TableColumn fx:id="dueDateCol" prefWidth="75.0" text="DueDate" />
          </columns>
       </TableView>
+      <FontAwesomeIcon fill="WHITE" glyphName="CLOSE" layoutX="474.0" layoutY="24.0" onMouseClicked="#close" size="25" text="" wrappingWidth="23.714163780212402" />
    </children>
 </AnchorPane>

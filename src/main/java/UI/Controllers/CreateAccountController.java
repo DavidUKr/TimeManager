@@ -4,10 +4,13 @@ import UI.ScreenLoaders.PageLoader;
 import UI.ScreenLoaders.pages;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.util.Random;
 
@@ -53,5 +56,10 @@ public class CreateAccountController {
         if(random.nextInt()%2==0)
         lblExists.setText("Found");
         else lblExists.setText("NotFound");
+    }
+    @FXML
+    public void close(MouseEvent event) {
+        Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        stage.close();
     }
 }

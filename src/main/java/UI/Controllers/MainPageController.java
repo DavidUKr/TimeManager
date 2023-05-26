@@ -19,6 +19,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -49,7 +50,7 @@ public class MainPageController implements Initializable{
             DESCRIPTIONCol.setCellValueFactory(new PropertyValueFactory<Task,String>("DESCRIPTION"));
             dueDateCol.setCellValueFactory(new PropertyValueFactory<Task, LocalDate>("dueDATE"));
 
-            Task task1=new Task("Clean","CLeanAgain", LocalDate.now());
+            Task task1=new Task("Welcome!","Start managing your time!", LocalDate.now());
             tableView.getItems().add(task1);
 
             addDeleteButtonToTable();
@@ -212,6 +213,12 @@ public class MainPageController implements Initializable{
         Stage stage = new Stage();
         Scene newScene = new Scene(root);
         newScene.getStylesheets().add("/UI/Style.css");
+        stage.setResizable(false);
+        stage.initStyle(StageStyle.UNDECORATED);
+        Image icon=new Image("/UI/Images/watch2.png");
+        stage.getIcons().add(icon);
+        stage.setTitle("Time Management");
+
         stage.setScene(newScene);
         stage.show();
     }
@@ -234,8 +241,14 @@ public class MainPageController implements Initializable{
         checkListController= loader.getController();
         checkListController.setMainPageController(this);
         Stage stage = new Stage();
+        stage.setResizable(false);
+        stage.setTitle("Time Management");
+        Image icon=new Image("/UI/Images/watch2.png");
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.getIcons().add(icon);
         Scene newScene = new Scene(root);
         stage.setScene(newScene);
+
         checkListController.Check();
         stage.show();
 

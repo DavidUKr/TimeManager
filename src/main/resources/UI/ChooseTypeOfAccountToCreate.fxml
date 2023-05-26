@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -36,5 +37,7 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </Button>
+      <FontAwesomeIcon fill="WHITE" glyphName="ARROW_LEFT" layoutX="23.0" layoutY="43.0" onMouseClicked="#goBack" size="20" text="" />
+      <FontAwesomeIcon fill="WHITE" glyphName="CLOSE" layoutX="565.0" layoutY="43.0" onMouseClicked="#close" size="25" text="" wrappingWidth="23.714163780212402" />
    </children>
 </AnchorPane>

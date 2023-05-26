@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -43,5 +44,6 @@
       <Label fx:id="labelTitle" layoutX="255.0" layoutY="106.0" prefHeight="18.0" prefWidth="168.0" textFill="RED" />
       <Label fx:id="labelDescription" layoutX="255.0" layoutY="217.0" prefHeight="18.0" prefWidth="212.0" textFill="RED" />
       <Label fx:id="labelDate" layoutX="140.0" layoutY="271.0" prefHeight="18.0" prefWidth="253.0" textFill="RED" />
+      <FontAwesomeIcon fill="WHITE" glyphName="CLOSE" layoutX="456.0" layoutY="24.0" onMouseClicked="#close" size="25" text="" wrappingWidth="23.714163780212402" />
    </children>
 </AnchorPane>

@@ -80,6 +80,12 @@ public class AddTaskController {
             }
 
     }
+    @FXML
+    public void close(MouseEvent event) {
+        Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+    }
+
 
 
 }

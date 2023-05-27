@@ -20,7 +20,7 @@ public class DBQueryHandler {
         connection=DBConnection.getConnection();
         connection.setAutoCommit(true);
         task_index=100;
-        user_index=100;
+        user_index=50;
         compId=1;
     }
 

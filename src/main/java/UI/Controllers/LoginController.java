@@ -2,6 +2,9 @@ package UI.Controllers;
 
 import UI.ScreenLoaders.PageLoader;
 import UI.ScreenLoaders.pages;
+import database.DBConnection;
+import database.DBQueryHandler;
+import database.model.PersonalAcc;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -11,6 +14,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class LoginController {
 
@@ -21,11 +25,13 @@ public class LoginController {
     @FXML
     TextField txtFieldPassword;
 
-    public void login(ActionEvent event) throws IOException {
+    DBQueryHandler qHandler=new DBQueryHandler();
+
+    public void login(ActionEvent event) throws IOException, SQLException {
         System.out.println("Username:"+txtFieldUsername.getText());
         System.out.println("Pass:"+txtFieldPassword.getText());
 
-        PageLoader.loadPage(event, pages.MENU);
+        if(checkAcc())PageLoader.loadPage(event, pages.MENU);
     }
     @FXML
     public void close(MouseEvent event) {
@@ -37,5 +43,14 @@ public class LoginController {
 
         PageLoader.loadPageMouse(event,pages.FIRST_PAGE);
 
+    }
+
+    private boolean checkAcc() throws SQLException {
+        String username=txtFieldUsername.getText();
+        String password=txtFieldPassword.getText();
+
+        PersonalAcc acc=qHandler.isUser(username);
+        if(acc!=null && acc.getPassword().equals(username)) return true;
+        else return false;
     }
 }

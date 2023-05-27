@@ -2,6 +2,7 @@ package UI.Controllers;
 
 import UI.ScreenLoaders.PageLoader;
 import UI.ScreenLoaders.pages;
+import database.DBQueryHandler;
 import database.model.BusinessAcc;
 import database.model.IAccount;
 import database.repos.UserRepoImpl;
@@ -16,6 +17,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Random;
 
 
@@ -39,6 +41,8 @@ public class CreateAccountController {
     Label lblExists;
 
     UserRepoImpl database;
+    DBQueryHandler queryHandler=new DBQueryHandler();
+
 
     @FXML
     public void goBack(MouseEvent event) throws IOException {
@@ -50,15 +54,17 @@ public class CreateAccountController {
         PageLoader.loadPage(event, pages.CREATE_ACC);
     }
 
-    public void createAcc(){
+    public void createAcc() throws SQLException {
         IAccount ACCOUNT;
         if(!txtFieldPassword.getText().equals(txtFieldVerify.getText()))lblCorrect.setText("Not Same");
         else{
             if(PageLoader.isInBusiness()){
                 ACCOUNT=new BusinessAcc(txtFieldUsername.getText(), Integer.parseInt(txtFieldVerify.getText()));
+                queryHandler.saveUser((BusinessAcc)ACCOUNT);
             }
             else {
                 ACCOUNT = new PersonalAcc(txtFieldUsername.getText());
+                queryHandler.saveUser((PersonalAcc) ACCOUNT);
             }
             database.addAcc(ACCOUNT);
         }

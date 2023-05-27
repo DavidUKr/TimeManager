@@ -27,10 +27,14 @@ public class LoginController {
 
     DBQueryHandler qHandler=new DBQueryHandler();
 
+    public LoginController() throws SQLException {
+    }
+
     public void login(ActionEvent event) throws IOException, SQLException {
         System.out.println("Username:"+txtFieldUsername.getText());
         System.out.println("Pass:"+txtFieldPassword.getText());
 
+        //System.out.println(checkAcc());
         if(checkAcc())PageLoader.loadPage(event, pages.MENU);
     }
     @FXML
@@ -50,7 +54,7 @@ public class LoginController {
         String password=txtFieldPassword.getText();
 
         PersonalAcc acc=qHandler.isUser(username);
-        if(acc!=null && acc.getPassword().equals(username)) return true;
+        if(acc!=null && acc.getPassword().equals(password)) return true;
         else return false;
     }
 }

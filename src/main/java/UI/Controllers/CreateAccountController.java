@@ -43,6 +43,9 @@ public class CreateAccountController {
     UserRepoImpl database;
     DBQueryHandler queryHandler=new DBQueryHandler();
 
+    public CreateAccountController() throws SQLException {
+    }
+
 
     @FXML
     public void goBack(MouseEvent event) throws IOException {
@@ -55,16 +58,18 @@ public class CreateAccountController {
     }
 
     public void createAcc() throws SQLException {
-        IAccount ACCOUNT;
+        PersonalAcc ACCOUNT;
         if(!txtFieldPassword.getText().equals(txtFieldVerify.getText()))lblCorrect.setText("Not Same");
         else{
             if(PageLoader.isInBusiness()){
                 ACCOUNT=new BusinessAcc(txtFieldUsername.getText(), Integer.parseInt(txtFieldVerify.getText()));
+                ACCOUNT.setPassword(txtFieldPassword.getText());
                 queryHandler.saveUser((BusinessAcc)ACCOUNT);
             }
             else {
                 ACCOUNT = new PersonalAcc(txtFieldUsername.getText());
-                queryHandler.saveUser((PersonalAcc) ACCOUNT);
+                ACCOUNT.setPassword(txtFieldPassword.getText());
+                queryHandler.saveUser(ACCOUNT);
             }
             //database.addAcc(ACCOUNT);
         }

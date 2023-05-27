@@ -11,14 +11,17 @@ import java.util.List;
 public class DBQueryHandler {
 
     Connection connection;
-    PreparedStatement preparedStatement;
+    PreparedStatement preparedStatement=null;
     int task_index;
     int user_index;
-    public DBQueryHandler(){
+    int compId;
+    public DBQueryHandler() throws SQLException {
 
         connection=DBConnection.getConnection();
-        task_index=0;
-        user_index=0;
+        connection.setAutoCommit(true);
+        task_index=100;
+        user_index=100;
+        compId=1;
     }
 
     public void saveTask(Task task) throws SQLException {
@@ -37,29 +40,53 @@ public class DBQueryHandler {
         preparedStatement=connection.prepareStatement("INSERT INTO users (id, companyid, username, upassword) VALUES (?,?,?,?)");
         preparedStatement.setInt(1, user_index++);
         user.setId(user_index);
-        if(user instanceof BusinessAcc)preparedStatement.setInt(2, ((BusinessAcc)user).getComp_ID());
-        else preparedStatement.setInt(2, -1);
+        if(user instanceof BusinessAcc){
+            compId=((BusinessAcc)user).getComp_ID();
+            preparedStatement.setInt(2, compId);
+        }
+        else {
+            compId=1;
+            preparedStatement.setInt(2, compId);
+        }
         preparedStatement.setString(3, user.getUserName());
         preparedStatement.setString(4, user.getPassword());
+
+        System.out.println("id:"+user_index+"; companyid:"+compId+"; username:"+user.getUserName()+"; password:"+user.getPassword());
         preparedStatement.executeUpdate();
     }
 
     public PersonalAcc isUser(String username) throws SQLException {
         Statement s = connection.createStatement();
-        ResultSet r = s.executeQuery("SELECT username, password, companyid FROM users where username=\'"+username+"\'");
+        String query="SELECT username, upassword, companyid FROM users where username='"+username+"'";
+        System.out.println("user: "+username);
+        System.out.println(query);
+        ResultSet r = s.executeQuery(query);
 
-        String userName=r.getString("username");
-        String password=r.getString("password");
-        int compId=r.getInt("companyid");
+        String userName=null;
+        String password=null;
 
+        while(r.next()) {
+            userName = r.getString("username");
+            password = r.getString("upassword");
+            int compId = r.getInt("companyid");
+        }
         PersonalAcc acc;
 
-        if(userName.isEmpty()) return null;
+        if(userName.isEmpty()) {
+            System.out.println("empty username");
+            return null;
+        }
         else {
-            if(compId==-1) {
+            if(compId==1) {
+                System.out.println("recieving personal account with username: "+userName);
                 acc = new PersonalAcc(userName);
             }
-            else acc=new BusinessAcc(userName, compId);
+            else {
+                System.out.println("recieving personal account with username: "+userName+ "and compID:"+ compId);
+                acc=new BusinessAcc(userName, compId);
+            }
+
+            System.out.println("setting pssword:"+password);
             acc.setPassword(password);
             return acc;
         }

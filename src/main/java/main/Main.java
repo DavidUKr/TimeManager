@@ -14,6 +14,8 @@ import javafx.stage.StageStyle;
 public class Main extends Application{
 
     private UserRepoImpl database;
+    private static int userId;
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -35,6 +37,14 @@ public class Main extends Application{
         stage.setScene(scene);
         stage.show();
 
+    }
+
+    public static void setUserId(int userId) {
+        userId = userId;
+    }
+
+    public static int getUserId(){
+        return userId;
     }
 
     public UserRepoImpl getDatabase(){

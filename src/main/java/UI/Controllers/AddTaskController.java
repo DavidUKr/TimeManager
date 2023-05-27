@@ -1,7 +1,7 @@
 package UI.Controllers;
 
 import components.Task;
-import database.PersonalAcc;
+import database.model.PersonalAcc;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.DatePicker;
@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import main.Main;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -32,7 +33,7 @@ public class AddTaskController {
     LocalDate mydate;
     String myFormattedDate;
     MainPageController mainPageController=new MainPageController();
-    PersonalAcc personalAcc=new PersonalAcc(7,"ana");
+    PersonalAcc personalAcc=new PersonalAcc("ana");
     public void setMainPageController(MainPageController mainPageController) {
         this.mainPageController = mainPageController;
     }
@@ -65,7 +66,7 @@ public class AddTaskController {
             }
 
             if(status==1){
-                Task task = new Task(taskName, taskDescription, mydate);
+                Task task = new Task(Main.getUserId(),taskName, taskDescription, mydate);
                 task.setDueDATE(mydate);
                 task.setDESCRIPTION(taskDescription);
                 task.setTITLE(taskName);

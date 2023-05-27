@@ -8,18 +8,12 @@ import database.repos.UserRepoImpl;
 import database.model.PersonalAcc;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-<<<<<<< HEAD
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-=======
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
->>>>>>> UI
 
 import java.io.IOException;
 import java.util.Random;
@@ -44,17 +38,14 @@ public class CreateAccountController {
     @FXML
     Label lblExists;
 
-<<<<<<< HEAD
     UserRepoImpl database;
 
-=======
     @FXML
     public void goBack(MouseEvent event) throws IOException {
 
         PageLoader.loadPageMouse(event,pages.FIRST_PAGE);
 
     }
->>>>>>> UI
     public void switchPers_Buss(ActionEvent event) throws IOException {
         PageLoader.loadPage(event, pages.CREATE_ACC);
     }
@@ -64,10 +55,10 @@ public class CreateAccountController {
         if(!txtFieldPassword.getText().equals(txtFieldVerify.getText()))lblCorrect.setText("Not Same");
         else{
             if(PageLoader.isInBusiness()){
-                ACCOUNT=new BusinessAcc(/*Id generator */1, txtFieldUsername.getText(), Integer.parseInt(txtFieldVerify.getText()));
+                ACCOUNT=new BusinessAcc(txtFieldUsername.getText(), Integer.parseInt(txtFieldVerify.getText()));
             }
             else {
-                ACCOUNT = new PersonalAcc(1, txtFieldUsername.getText());
+                ACCOUNT = new PersonalAcc(txtFieldUsername.getText());
             }
             database.addAcc(ACCOUNT);
         }

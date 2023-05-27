@@ -1,6 +1,6 @@
 package main;
 
-import components.Task;
+import database.repos.UserRepoImpl;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,12 +12,17 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class Main extends Application{
+
+    private UserRepoImpl database;
+    private static int userId;
+
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
     public void start(Stage stage) throws Exception {
+        database=new UserRepoImpl();
 
 
         Parent root= FXMLLoader.load(getClass().getResource("/UI/FirstPage.fxml"));
@@ -32,5 +37,17 @@ public class Main extends Application{
         stage.setScene(scene);
         stage.show();
 
+    }
+
+    public static void setUserId(int userId) {
+        userId = userId;
+    }
+
+    public static int getUserId(){
+        return userId;
+    }
+
+    public UserRepoImpl getDatabase(){
+        return database;
     }
 }

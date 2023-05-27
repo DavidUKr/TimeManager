@@ -50,7 +50,7 @@ public class MainPageController implements Initializable{
             DESCRIPTIONCol.setCellValueFactory(new PropertyValueFactory<Task,String>("DESCRIPTION"));
             dueDateCol.setCellValueFactory(new PropertyValueFactory<Task, LocalDate>("dueDATE"));
 
-            Task task1=new Task("Welcome!","Start managing your time!", LocalDate.now());
+            Task task1=new Task(0,"Welcome!","Start managing your time!", LocalDate.now());
             tableView.getItems().add(task1);
 
             addDeleteButtonToTable();

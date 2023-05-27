@@ -78,5 +78,7 @@ public class PageLoader {
         stage.show();
     }
 
-
+    public static boolean isInBusiness() {
+        return inBusiness;
+    }
 }

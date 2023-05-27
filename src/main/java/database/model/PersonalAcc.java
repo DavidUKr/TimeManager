@@ -1,4 +1,4 @@
-package database;
+package database.model;
 
 import components.Task;
 
@@ -8,12 +8,10 @@ public class PersonalAcc implements IAccount{
     private int ID;
     private String userName;
     private ArrayList<Task> TASKS;
+    private String password;
 
-    public PersonalAcc(){
 
-    }
-
-    public PersonalAcc(int ID, String userName){
+    public PersonalAcc(String userName){
         this.ID=ID;
         this.userName=userName;
         TASKS=new ArrayList<Task>();
@@ -40,4 +38,14 @@ public class PersonalAcc implements IAccount{
     }
 
 
+    public void setId(int userIndex) {
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

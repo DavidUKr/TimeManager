@@ -10,7 +10,6 @@ public class PersonalAcc implements IAccount{
     private ArrayList<Task> TASKS;
     private String password;
 
-
     public PersonalAcc(String userName){
         this.ID=ID;
         this.userName=userName;
@@ -47,5 +46,9 @@ public class PersonalAcc implements IAccount{
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getCompanyId(){
+        return 1;
     }
 }

@@ -1,6 +1,7 @@
 package UI.Controllers;
 
 import components.Task;
+import database.DBQueryHandler;
 import database.model.PersonalAcc;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -12,6 +13,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import main.Main;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -34,12 +36,17 @@ public class AddTaskController {
     String myFormattedDate;
     MainPageController mainPageController=new MainPageController();
     PersonalAcc personalAcc=new PersonalAcc("ana");
+    DBQueryHandler queryHandler;
+    public AddTaskController() throws SQLException {
+        queryHandler=new DBQueryHandler();
+    }
+
     public void setMainPageController(MainPageController mainPageController) {
         this.mainPageController = mainPageController;
     }
 
     @FXML
-    public void closePageWhenAddingTask(MouseEvent event){
+    public void closePageWhenAddingTask(MouseEvent event) throws SQLException {
             int status=1;
 
                 taskName = taskTitle.getText();
@@ -66,7 +73,7 @@ public class AddTaskController {
             }
 
             if(status==1){
-                Task task = new Task(Main.getUserId(),taskName, taskDescription, mydate);
+                Task task = new Task(Main.getUserId(), Main.getCompanyID(),taskName, taskDescription, mydate);
                 task.setDueDATE(mydate);
                 task.setDESCRIPTION(taskDescription);
                 task.setTITLE(taskName);
@@ -87,6 +94,11 @@ public class AddTaskController {
         stage.close();
     }
 
-
-
+    public void addTaskToDatabase(Task task){
+        try {
+            queryHandler.saveTask(task);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

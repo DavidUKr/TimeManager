@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import main.Main;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -36,6 +37,9 @@ public class LoginController {
 
         //System.out.println(checkAcc());
         if(checkAcc())PageLoader.loadPage(event, pages.MENU);
+        DBQueryHandler queryHandler=new DBQueryHandler();
+        Main.setUserId(queryHandler.getUserID(txtFieldUsername.getText()));
+        Main.setCompanyId(queryHandler.getCoID(txtFieldUsername.getText()));
     }
     @FXML
     public void close(MouseEvent event) {

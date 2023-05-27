@@ -3,6 +3,7 @@ package UI.Controllers;
 import UI.ScreenLoaders.PageLoader;
 import UI.ScreenLoaders.pages;
 import components.Task;
+import database.DBQueryHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,19 +22,23 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
+import main.Main;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 
 public class MainPageController implements Initializable{
 
     ArrayList<Task> taskChecked=new ArrayList<>();
-
+    DBQueryHandler queryHandler=new DBQueryHandler();
 
     @FXML
     private TableView tableView=new TableView<Task>();
@@ -42,6 +47,11 @@ public class MainPageController implements Initializable{
     @FXML private TableColumn<Task, LocalDate> dueDateCol=new TableColumn<Task,LocalDate>("Date");
 
     CheckListController checkListController;
+    AddTaskController addTaskController;
+
+    public MainPageController() throws SQLException {
+        taskChecked.addAll(queryHandler.getCheckedTasks());
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -94,7 +104,11 @@ public class MainPageController implements Initializable{
                             Task data = getTableView().getItems().get(getIndex());
                             System.out.println("selectedData: " + data.getTITLE()+data.getDESCRIPTION()+data.getDueDATE());
                             data.setStatus(2);
-                            DeleteTask(data);
+                            try {
+                                DeleteTask(data);
+                            } catch (SQLException e) {
+                                throw new RuntimeException(e);
+                            }
                         });
                     }
 
@@ -155,7 +169,11 @@ public class MainPageController implements Initializable{
                             System.out.println("selectedData: " + data.getTITLE()+data.getDESCRIPTION()+data.getDueDATE());
                             data.setStatus(1);
 
-                            checkedTask(data);
+                            try {
+                                checkedTask(data);
+                            } catch (SQLException e) {
+                                throw new RuntimeException(e);
+                            }
                         });
                     }
 
@@ -181,13 +199,16 @@ public class MainPageController implements Initializable{
 
     }
 
-    public void addDataToTable(Task task) {
+    public void addDataToTable(Task task) throws SQLException {
         tableView.getItems().add(task);
+        tableView.getItems().addAll(queryHandler.getCompanyTasks());
+        addTaskController.addTaskToDatabase(task);
     }
 
 
-    public void DeleteTask(Task task){
+    public void DeleteTask(Task task) throws SQLException {
         tableView.getItems().remove(task);
+        queryHandler.deleteTask(task);
     }
 
     @FXML
@@ -208,7 +229,7 @@ public class MainPageController implements Initializable{
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/UI/addTaskPage.fxml"));
         Parent root = loader.load();
-        AddTaskController addTaskController = loader.getController();
+        addTaskController = loader.getController();
         addTaskController.setMainPageController(this);
         Stage stage = new Stage();
         Scene newScene = new Scene(root);
@@ -222,13 +243,14 @@ public class MainPageController implements Initializable{
         stage.setScene(newScene);
         stage.show();
     }
-    public void checkedTask(Task task){
-
+    public void checkedTask(Task task) throws SQLException {
         taskChecked.add(task);
         tableView.getItems().remove(task);
+        queryHandler.checkTask(task);
     }
 
     public ArrayList<Task> getTask(){
+
         return taskChecked;
     }
 

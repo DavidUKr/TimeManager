@@ -8,7 +8,7 @@ import java.util.Date;
 
 public class Task {
     private String TITLE;
-
+    private int ID;
     private String DESCRIPTION;
     private LocalDate dueDATE;
     private int userID;
@@ -31,7 +31,7 @@ public class Task {
         this.dueDATE=dueDATE;
         this.userID=userID;
         status=0;
-        this.companyID=-1;
+        this.companyID=1;
     }
 
     public Task(String TITLE){
@@ -88,5 +88,13 @@ public class Task {
 
     public int getCompanyID(){
         return companyID;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 }

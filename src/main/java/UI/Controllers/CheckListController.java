@@ -8,6 +8,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -21,6 +23,10 @@ public class CheckListController{
     @FXML private TableColumn<Task, LocalDate> dueDateCol=new TableColumn<Task,LocalDate>("Date");
 
     MainPageController mainPageController=new MainPageController();
+
+    public CheckListController() throws SQLException {
+    }
+
     public void setMainPageController(MainPageController mainPageController) {
         this.mainPageController = mainPageController;
     }

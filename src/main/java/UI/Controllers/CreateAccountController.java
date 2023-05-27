@@ -39,6 +39,8 @@ public class CreateAccountController {
     Label lblCorrect;
     @FXML
     Label lblExists;
+    @FXML
+    TextField txtFieldCoID;
 
     UserRepoImpl database;
     DBQueryHandler queryHandler=new DBQueryHandler();
@@ -62,7 +64,7 @@ public class CreateAccountController {
         if(!txtFieldPassword.getText().equals(txtFieldVerify.getText()))lblCorrect.setText("Not Same");
         else{
             if(PageLoader.isInBusiness()){
-                ACCOUNT=new BusinessAcc(txtFieldUsername.getText(), Integer.parseInt(txtFieldVerify.getText()));
+                ACCOUNT=new BusinessAcc(txtFieldUsername.getText(), Integer.parseInt(txtFieldCoID.getText()));
                 ACCOUNT.setPassword(txtFieldPassword.getText());
                 queryHandler.saveUser((BusinessAcc)ACCOUNT);
             }

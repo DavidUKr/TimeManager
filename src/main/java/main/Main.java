@@ -15,9 +15,14 @@ public class Main extends Application{
 
     private UserRepoImpl database;
     private static int userId;
+    private static int companyId;
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public static int getCompanyID() {
+        return companyId;
     }
 
     @Override
@@ -39,8 +44,11 @@ public class Main extends Application{
 
     }
 
-    public static void setUserId(int userId) {
-        userId = userId;
+    public static void setUserId(int Id) {
+        userId = Id;
+    }
+    public static void setCompanyId(int Id){
+        companyId=Id;
     }
 
     public static int getUserId(){

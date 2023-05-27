@@ -228,4 +228,10 @@ public class DBQueryHandler {
 
         return TASKS;
     }
+
+    public void delUser(int id) throws SQLException {
+        preparedStatement=connection.prepareStatement("DELETE FROM users WHERE id=?");
+        preparedStatement.setInt(1, id);
+        preparedStatement.executeUpdate();
+    }
 }

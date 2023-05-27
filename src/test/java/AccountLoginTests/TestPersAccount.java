@@ -23,7 +23,7 @@ public class TestPersAccount{
     }
 
     @Test
-    @DisplayName("Test register personale account")
+    @DisplayName("Test register personal account")
     void TestTaskAdd(){
         assertNotNull(pers.getTasks());
     }

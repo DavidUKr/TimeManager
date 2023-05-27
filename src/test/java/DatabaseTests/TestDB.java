@@ -14,7 +14,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class TestPersAccDB {
+public class TestDB {
 
     DBQueryHandler qHand;
     PersonalAcc user;
@@ -35,11 +35,11 @@ public class TestPersAccDB {
 
         mainPageController=new MainPageController();
     }
-
+/*
     @AfterAll
-    void clean() throws SQLException {
+    void static clean() throws SQLException {
         qHand.delUser(user.getID());
-    }
+    }*/
 
     @Test
     @DisplayName("Test saveUser")

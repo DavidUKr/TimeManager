@@ -10,7 +10,7 @@ public class DBConnection {
     private static Connection connection;
 
     public static Connection getConnection() {
-        String url="http://localhost:5432";
+        String url="jdbc:postgresql://localhost:5432/TimeManager";
         String user="postgres";
         String password="pIcia056";
 

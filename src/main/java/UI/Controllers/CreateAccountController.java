@@ -66,7 +66,7 @@ public class CreateAccountController {
                 ACCOUNT = new PersonalAcc(txtFieldUsername.getText());
                 queryHandler.saveUser((PersonalAcc) ACCOUNT);
             }
-            database.addAcc(ACCOUNT);
+            //database.addAcc(ACCOUNT);
         }
     }
 

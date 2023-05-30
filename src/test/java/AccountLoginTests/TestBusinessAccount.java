@@ -1,3 +1,4 @@
+
 package AccountLoginTests;
 
 import database.model.BusinessAcc;
@@ -19,7 +20,7 @@ public class TestBusinessAccount {
     @Test
     @DisplayName("Test Business Acc getCompId")
     void TestGetCompId(){
-        assertEquals(3, acc.getCompanyId());
+        assertEquals(3, acc.getCompanyId(), ""+acc.getCompanyId());
     }
 
 }

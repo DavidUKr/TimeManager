@@ -1,13 +1,15 @@
 package database.model;
 
+import main.Main;
+
 public class BusinessAcc extends PersonalAcc{
-    private int comp_ID;
 
     public BusinessAcc(String userName, int comp_ID){
         super(userName);
-        this.comp_ID=comp_ID;
+        super.setCompanyId(comp_ID);
+        Main.setCompanyId(comp_ID);
     }
-    public int getComp_ID() {
-        return comp_ID;
+    public int getCompanyID() {
+        return super.getCompanyId();
     }
 }

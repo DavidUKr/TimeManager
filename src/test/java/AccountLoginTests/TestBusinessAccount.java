@@ -17,7 +17,7 @@ public class TestBusinessAccount {
     }
 
     @Test
-    @DisplayName("Test Bus Acc getCompId")
+    @DisplayName("Test Business Acc getCompId")
     void TestGetCompId(){
         assertEquals(3, acc.getCompanyId());
     }

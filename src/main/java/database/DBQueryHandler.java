@@ -47,7 +47,7 @@ public class DBQueryHandler {
         preparedStatement.setInt(1, ++user_index);
         user.setId(user_index);
         if(user instanceof BusinessAcc){
-            compId=((BusinessAcc)user).getComp_ID();
+            compId=((BusinessAcc)user).getCompanyID();
             preparedStatement.setInt(2, compId);
         }
         else {

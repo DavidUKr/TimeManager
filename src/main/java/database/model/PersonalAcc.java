@@ -9,6 +9,7 @@ public class PersonalAcc implements IAccount{
     private String userName;
     private ArrayList<Task> TASKS;
     private String password;
+    private int companyId=1;
 
     public PersonalAcc(String userName){
         this.ID=ID;
@@ -49,6 +50,6 @@ public class PersonalAcc implements IAccount{
     }
 
     public int getCompanyId(){
-        return 1;
+        return companyId;
     }
 }

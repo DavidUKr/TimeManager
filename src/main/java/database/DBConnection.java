@@ -10,9 +10,9 @@ public class DBConnection {
     private static Connection connection;
 
     public static Connection getConnection() {
-        String url="jdbc:postgresql://localhost:5432/TimeManager";
+        String url="jdbc:postgresql://192.168.1.225:5432/TimeManager";
         String user="postgres";
-        String password="pIcia056";
+        String password="timipIcia0956";
 
         try {
             connection= DriverManager.getConnection(url, user, password);

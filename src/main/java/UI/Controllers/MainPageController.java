@@ -201,6 +201,7 @@ public class MainPageController implements Initializable{
 
     public void addDataToTable(Task task) throws SQLException {
         tableView.getItems().add(task);
+        tableView.getItems().addAll(queryHandler.selectTasks());
         tableView.getItems().addAll(queryHandler.getCompanyTasks());
         addTaskController.addTaskToDatabase(task);
     }

@@ -20,12 +20,27 @@ public class DBQueryHandler {
     int user_index;
     int compId;
     public DBQueryHandler() throws SQLException {
-
         connection=DBConnection.getConnection();
         connection.setAutoCommit(true);
+
+        initDatabase();
+
         task_index=getLastTaskID();
         user_index=getLastUserID();
         compId=1;
+    }
+
+    private void initDatabase() throws SQLException {
+        String initUsers="create table if not exists users(id int primary key, companyid int, username varchar(100), upassword varchar(100))";
+        String initTasks="create table if not exists tasks(id int primary key, userid int, companyid int, title varchar(1000), description varchar(10000), duedate date, status int)";
+        String initCompany="create table if not exists companies(id int primary key, name varchar(1000))";
+        String initNoCompany="insert into companies (id, name) values (1, 'NoCompany') ON CONFLICT DO NOTHING";
+        ArrayList<String> queries = new ArrayList<>(List.of(initUsers, initTasks, initCompany, initNoCompany));
+
+        for(String q:queries){
+            preparedStatement=connection.prepareStatement(q);
+            preparedStatement.executeUpdate();
+        }
     }
 
     public void saveTask(Task task) throws SQLException {
@@ -100,7 +115,7 @@ public class DBQueryHandler {
 
     public List<Task> selectTasks() throws SQLException {
         Statement s = connection.createStatement();
-        ResultSet r = s.executeQuery("SELECT id, userid, companyid, title, description, duedate, status FROM tasks");
+        ResultSet r = s.executeQuery("SELECT id, userid, companyid, title, description, duedate, status FROM tasks where status!=1");
 
         ArrayList<Task> tasks=new ArrayList<>();
         while(r.next()){

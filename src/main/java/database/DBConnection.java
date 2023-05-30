@@ -5,19 +5,26 @@ import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import static java.lang.Class.forName;
+
 public class DBConnection {
 
     private static Connection connection;
 
     public static Connection getConnection() {
         String url="jdbc:postgresql://192.168.1.225:5432/TimeManager";
+        /*String user="timemanager";
+        String password="tm1234";*/
         String user="postgres";
         String password="timipIcia0956";
 
         try {
+            Class.forName("org.postgresql.Driver");
             connection= DriverManager.getConnection(url, user, password);
         } catch (SQLException e) {
-            throw new RuntimeException("Could not return connection");
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
 
         return connection;

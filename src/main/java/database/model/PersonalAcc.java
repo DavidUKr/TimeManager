@@ -39,6 +39,7 @@ public class PersonalAcc implements IAccount{
 
 
     public void setId(int userIndex) {
+        ID=userIndex;
     }
 
     public String getPassword() {

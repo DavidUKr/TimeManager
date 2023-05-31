@@ -34,7 +34,7 @@ public class DBQueryHandler {
         String initUsers="create table if not exists users(id int primary key, companyid int, username varchar(100), upassword varchar(100))";
         String initTasks="create table if not exists tasks(id int primary key, userid int, companyid int, title varchar(1000), description varchar(10000), duedate date, status int)";
         String initCompany="create table if not exists companies(id int primary key, name varchar(1000))";
-        String initNoCompany="insert into companies (id, name) values (1, 'NoCompany') ON CONFLICT DO NOTHING";
+        String initNoCompany="insert into companies (id, companyname) values (1, 'NoCompany') ON CONFLICT DO NOTHING";
         ArrayList<String> queries = new ArrayList<>(List.of(initUsers, initTasks, initCompany, initNoCompany));
 
         for(String q:queries){

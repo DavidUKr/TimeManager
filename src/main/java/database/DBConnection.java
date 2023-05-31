@@ -12,7 +12,7 @@ public class DBConnection {
     private static Connection connection;
 
     public static Connection getConnection() {
-        String url="jdbc:postgresql://192.168.254.140:5432/TimeManager";
+        String url="jdbc:postgresql://192.168.133.162:5432/TimeManager";
         String user="timemanager";
         String password="tm1234";
 

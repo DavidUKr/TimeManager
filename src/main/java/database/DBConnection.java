@@ -13,10 +13,8 @@ public class DBConnection {
 
     public static Connection getConnection() {
         String url="jdbc:postgresql://192.168.133.162:5432/TimeManager";
-        /*String user="timemanager";
-        String password="tm1234";*/
-        String user="postgres";
-        String password="timipIcia0956";
+        String user="timemanager";
+        String password="tm1234";
 
         try {
             Class.forName("org.postgresql.Driver");

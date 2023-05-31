@@ -33,6 +33,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 
 public class MainPageController implements Initializable{
@@ -63,8 +64,19 @@ public class MainPageController implements Initializable{
             Task task1=new Task(0,"Welcome!","Start managing your time!", LocalDate.now());
             tableView.getItems().add(task1);
 
-            addDeleteButtonToTable();
-            addCheckButtonToTable();
+        addDeleteButtonToTable();
+        addCheckButtonToTable();
+
+        try {
+            tableView.getItems().addAll(queryHandler.selectTasks().stream().filter(task2->task2.getUserID()==Main.getUserId()).collect(Collectors.toList()));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            tableView.getItems().addAll(queryHandler.getCompanyTasks().stream().filter(task10 -> task10.getCompanyID()!=1).collect(Collectors.toList()));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
@@ -201,8 +213,8 @@ public class MainPageController implements Initializable{
 
     public void addDataToTable(Task task) throws SQLException {
         tableView.getItems().add(task);
-        tableView.getItems().addAll(queryHandler.selectTasks());
-        tableView.getItems().addAll(queryHandler.getCompanyTasks());
+        tableView.getItems().addAll(queryHandler.selectTasks().stream().filter(task2->task2.getUserID()==Main.getUserId()).collect(Collectors.toList()));
+        tableView.getItems().addAll(queryHandler.getCompanyTasks().stream().filter(task1 -> task1.getCompanyID()!=1).collect(Collectors.toList()));
         addTaskController.addTaskToDatabase(task);
     }
 
@@ -245,6 +257,7 @@ public class MainPageController implements Initializable{
         stage.show();
     }
     public void checkedTask(Task task) throws SQLException {
+        task.setStatus(1);
         taskChecked.add(task);
         tableView.getItems().remove(task);
         queryHandler.checkTask(task);

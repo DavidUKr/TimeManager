@@ -50,7 +50,6 @@ public class LoginController {
     public void goBack(MouseEvent event) throws IOException{
 
         PageLoader.loadPageMouse(event,pages.FIRST_PAGE);
-
     }
 
     private boolean checkAcc() throws SQLException {

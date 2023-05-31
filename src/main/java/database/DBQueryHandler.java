@@ -46,6 +46,7 @@ public class DBQueryHandler {
     public void saveTask(Task task) throws SQLException {
         preparedStatement=connection.prepareStatement("INSERT INTO tasks (id, userid, companyid, title, description, duedate, status) VALUES(?,?,?,?,?,?,?)");
         preparedStatement.setInt(1, ++task_index);
+        System.out.println("task index: "+task_index);
         preparedStatement.setInt(2, task.getUserID());
         preparedStatement.setInt(3, task.getCompanyID());
         preparedStatement.setString(4, task.getTITLE());
